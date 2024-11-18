@@ -23,6 +23,20 @@ export default function QueryProcessor(query: string): string {
     return String(result)
   }
 
+  const match4 = query.match(/Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/i);
+    if (match4) {
+      const numbers = match4.slice(1).map(Number);
+      
+      const isSquareAndCube = (num: number) => {
+        const sqrt = Math.sqrt(num);
+        const cbrt = Math.cbrt(num);
+        return Number.isInteger(sqrt) && Number.isInteger(cbrt);
+      };
+
+      const result = numbers.find(isSquareAndCube);
+      return result ? String(result) : "No number found that is both a square and a cube.";
+    }
+
 const match2 = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/i);
 if (match2) {
   const num1 = parseInt(match2[1]);
