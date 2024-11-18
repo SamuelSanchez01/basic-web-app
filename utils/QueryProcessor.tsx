@@ -15,6 +15,17 @@ export default function QueryProcessor(query: string): string {
     return String(result)
   }
 
+const match2 = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/i);
+if (match2) {
+  const num1 = parseInt(match2[1]);
+  const num2 = parseInt(match2[2]);
+  const num3 = parseInt(match2[3]);
+  
+  const maxNum = Math.max(num1, num2, num3);
+  return String(maxNum);
+}
+
+
   if (query == "What is your name?") {
     // TODO añade tu USB ID a continuación
     // TODO actualiza el caso de prueba correspondiente en __tests__
