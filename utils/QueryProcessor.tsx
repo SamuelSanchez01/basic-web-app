@@ -15,6 +15,14 @@ export default function QueryProcessor(query: string): string {
     return String(result)
   }
 
+  const match3 = query.match(/what is (\d+) multiplied by (\d+)/i); 
+  if (match3) { 
+    const num1 = parseInt(match3[1]); 
+    const num2 = parseInt(match3[2]); 
+    const result = num1 * num2;
+    return String(result)
+  }
+
 const match2 = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/i);
 if (match2) {
   const num1 = parseInt(match2[1]);
