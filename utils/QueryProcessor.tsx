@@ -47,6 +47,23 @@ if (match2) {
   return String(maxNum);
 }
 
+const match5 = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)/i);
+    if (match5) {
+      const numbers = match5.slice(1).map(Number);
+  
+      const isPrime = (num: number) => {
+        if (num <= 1) return false;
+        if (num <= 3) return true;
+        if (num % 2 === 0 || num % 3 === 0) return false;
+        for (let i = 5; i * i <= num; i += 6) {
+          if (num % i === 0 || num % (i + 2) === 0) return false;
+        }
+        return true;
+      };
+  
+      const primes = numbers.filter(isPrime);
+      return primes.length > 0 ? primes.join(', ') : "No prime numbers found.";
+    }
 
   if (query == "What is your name?") {
     // TODO añade tu USB ID a continuación
